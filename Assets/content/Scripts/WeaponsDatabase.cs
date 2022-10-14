@@ -7,12 +7,20 @@ public class WeaponData
     public int MaxLevel;
     public int BaseDamage;
     public Sprite Icon;
+
+    public Sprite Sprite;
+
+    public float Duration;
+
+    public Vector3 scale = Vector3.one;
+
+
+
     /*
         public int Rarity;
         public float Area;
         public float Speed;
         public float Amount;
-        public float Duration;
         public float Cooldown;
         public float Pierce;
         public float ProjectileInterval;

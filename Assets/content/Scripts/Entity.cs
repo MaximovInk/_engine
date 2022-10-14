@@ -12,6 +12,8 @@ public class Entity : MonoBehaviour
 
     private Rigidbody2D _rg2d;
 
+    public bool IsFacingRight => isFacingRight;
+
     private bool isFacingRight;
 
     [HideInInspector]
