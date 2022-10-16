@@ -3,7 +3,7 @@
 [System.Serializable]
 public class WeaponData
 {
-    public WeaponInstance prefab;
+    public GameObject prefab;
     public int MaxLevel;
     public int BaseDamage;
     public Sprite Icon;
