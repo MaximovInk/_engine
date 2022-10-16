@@ -3,6 +3,8 @@
 [System.Serializable]
 public class WeaponData
 {
+    public WeaponInstance weaponDriverPrefab;
+
     public GameObject prefab;
     public int MaxLevel;
     public int BaseDamage;
@@ -16,6 +18,7 @@ public class WeaponData
 
     public float Force = 1f;
 
+    public WeaponType WeaponType;
 
     /*
         public int Rarity;

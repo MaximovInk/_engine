@@ -3418,6 +3418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 277197047}
+  frameRange: 60
 --- !u!1 &1539641503
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,6 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3bde5ddd35ca7468756a3a4984cea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponDatabase: {fileID: 11400000, guid: 1b626fd5e2542b64c8b7f70d9ad0a894, type: 2}
 --- !u!1 &2012991111
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public struct LevelData
 {
@@ -46,6 +47,8 @@ public struct LevelData
             OnChanged?.Invoke(this);
         }
     }
+
+    public List<AbilitySlot> abilities;
 
     private int _enemyDeathCount;
 

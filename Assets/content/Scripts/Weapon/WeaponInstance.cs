@@ -29,7 +29,7 @@ public class ProjectileWeaponDriver : WeaponDriver
         go.transform.localScale = instance.weaponData.scale;
         go.AddComponent<SpriteRenderer>().sprite = instance.weaponData.Sprite;
         var rb2d = go.AddComponent<Rigidbody2D>();
-        rb2d.velocity = new Vector2(5f * (instance.player.Entity.IsFacingRight ? 1 : -1), 10f);
+        rb2d.velocity = new Vector2(5f * (Player.Instance.Entity.IsFacingRight ? 1 : -1), 10f);
         rb2d.gravityScale = 4f;
         var box = go.AddComponent<BoxCollider2D>();
         box.isTrigger = true;
@@ -52,7 +52,7 @@ public class MeleeWeaponDriver : WeaponDriver
         go.transform.parent = instance.transform;
         go.transform.localScale = new Vector3(
             go.transform.localScale.x *
-            (instance.player.Entity.IsFacingRight ? 1 : -1),
+            (Player.Instance.Entity.IsFacingRight ? 1 : -1),
             go.transform.localScale.y,
             go.transform.localScale.z);
     }
@@ -70,11 +70,11 @@ public class FacedProjectileWeaponDriver : ProjectileWeaponDriver
         rb2d.gravityScale = 0;
 
         //Стоим
-        if (instance.player.GetComponent<Rigidbody2D>().velocity.magnitude < 1f)
+        if (Player.Instance.GetComponent<Rigidbody2D>().velocity.magnitude < 1f)
         {
             rb2d.velocity
-            = (instance.player.Entity.IsFacingRight ? 1 : -1)
-            * instance.player.Entity.Speed 
+            = (Player.Instance.Entity.IsFacingRight ? 1 : -1)
+            * Player.Instance.Entity.Speed 
             * 2f
             * instance.weaponData.Force
             * new Vector2(1, 0);
@@ -83,10 +83,12 @@ public class FacedProjectileWeaponDriver : ProjectileWeaponDriver
         else
         {
             rb2d.velocity
-                = instance.player.GetComponent<Rigidbody2D>().velocity
+                = Player.Instance.GetComponent<Rigidbody2D>().velocity
                 * instance.weaponData.Force
                 * 2f;
         }
+
+        projectile.transform.up = rb2d.velocity.normalized;
     }
 }
 
@@ -95,23 +97,13 @@ public class WeaponInstance : MonoBehaviour
     //[HideInInspector]
     public WeaponData weaponData;
 
-    public WeaponType WeaponType;
-
-    [HideInInspector]
-    public Player player;
-
     private WeaponDriver weaponDriver;
 
     private float timer;
 
-    private void Awake()
-    {
-        player = GetComponentInParent<Player>();
-    }
-
     private void Start()
     {
-        switch (WeaponType)
+        switch (weaponData.WeaponType)
         {
             case WeaponType.Melee:
                 weaponDriver = new MeleeWeaponDriver();

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    public WeaponsDatabase WeaponDatabase;
+
     private void Awake()
     {
         if (Instance != null && Instance!=this) Destroy(gameObject);

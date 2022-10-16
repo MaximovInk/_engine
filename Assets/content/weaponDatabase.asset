@@ -13,9 +13,53 @@ MonoBehaviour:
   m_Name: weaponDatabase
   m_EditorClassIdentifier: 
   weapons:
-  - prefab: {fileID: 0}
+  - weaponDriverPrefab: {fileID: 0}
+    prefab: {fileID: 0}
     MaxLevel: 0
     BaseDamage: 0
-  - prefab: {fileID: 0}
+    Icon: {fileID: 0}
+    Sprite: {fileID: 0}
+    Duration: 0
+    scale: {x: 1, y: 1, z: 1}
+    Force: 1
+    WeaponType: 0
+  - weaponDriverPrefab: {fileID: 0}
+    prefab: {fileID: 0}
     MaxLevel: 0
-    BaseDamage: 0
+    BaseDamage: 10
+    Icon: {fileID: -8745133278752961275, guid: 913f6a661af5b6043a575518e6d839a4, type: 3}
+    Sprite: {fileID: 6711139061982437163, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
+    Duration: 1
+    scale: {x: 0.5, y: 0.5, z: 0.5}
+    Force: 1
+    WeaponType: 1
+  - weaponDriverPrefab: {fileID: 0}
+    prefab: {fileID: 4603131709175559168, guid: 65e6df61875fbfb498848f79ed704c55, type: 3}
+    MaxLevel: 0
+    BaseDamage: 10
+    Icon: {fileID: -4330735260778472016, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
+    Sprite: {fileID: 0}
+    Duration: 1
+    scale: {x: 1, y: 1, z: 1}
+    Force: 1
+    WeaponType: 0
+  - weaponDriverPrefab: {fileID: 0}
+    prefab: {fileID: 4603131709175559168, guid: a82462f19034aae46ab363c1a3850a49, type: 3}
+    MaxLevel: 0
+    BaseDamage: 10
+    Icon: {fileID: 3475101186164888376, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
+    Sprite: {fileID: 0}
+    Duration: 1
+    scale: {x: 1, y: 1, z: 1}
+    Force: 1
+    WeaponType: 0
+  - weaponDriverPrefab: {fileID: 0}
+    prefab: {fileID: 0}
+    MaxLevel: 0
+    BaseDamage: 10
+    Icon: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
+    Sprite: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
+    Duration: 1
+    scale: {x: 0.5, y: 0.5, z: 0.5}
+    Force: 1
+    WeaponType: 2
