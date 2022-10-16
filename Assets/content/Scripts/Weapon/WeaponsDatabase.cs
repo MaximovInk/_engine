@@ -14,6 +14,7 @@ public class WeaponData
 
     public Vector3 scale = Vector3.one;
 
+    public float Force = 1f;
 
 
     /*

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    Default,
+    Melee,
     Projectile,
     Faced
 }
@@ -20,25 +20,30 @@ public abstract class WeaponDriver
     public abstract void Attack();
 }
 
-public class ProjectileDriver : WeaponDriver
+public class ProjectileWeaponDriver : WeaponDriver
 {
-    public override void Attack()
+    protected virtual Projectile SpawnProjectile()
     {
         GameObject go = new GameObject();
         go.transform.position = instance.transform.position;
         go.transform.localScale = instance.weaponData.scale;
         go.AddComponent<SpriteRenderer>().sprite = instance.weaponData.Sprite;
         var rb2d = go.AddComponent<Rigidbody2D>();
-        rb2d.velocity = new Vector2(5f * (instance.player.Entity.IsFacingRight ? 1 : -1),10f);
+        rb2d.velocity = new Vector2(5f * (instance.player.Entity.IsFacingRight ? 1 : -1), 10f);
         rb2d.gravityScale = 4f;
         var box = go.AddComponent<BoxCollider2D>();
         box.isTrigger = true;
-        go.AddComponent<Projectile>();
-        Object.Destroy(go, 3f); 
+        return go.AddComponent<Projectile>();
+    }
+
+    public override void Attack()
+    {
+        SpawnProjectile();
+
     }
 }
 
-public class DirectionDriveWeapon : WeaponDriver
+public class MeleeWeaponDriver : WeaponDriver
 {
     public override void Attack()
     {
@@ -50,22 +55,38 @@ public class DirectionDriveWeapon : WeaponDriver
             (instance.player.Entity.IsFacingRight ? 1 : -1),
             go.transform.localScale.y,
             go.transform.localScale.z);
-        Object.Destroy(go,0.1f);
+    }
+}
 
-        /*
-          GameObject go = new GameObject();
-         go.transform.position = instance.transform.position;
-         var scale = instance.weaponData.scale;
-         //scale.x *= (instance.player.Entity.IsFacingRight ? 1 : -1);
-         go.transform.localScale = scale;
-         go.transform.parent = instance.transform;
-         go.AddComponent<SpriteRenderer>().sprite = instance.weaponData.Sprite;
-         var box = go.AddComponent<BoxCollider2D>();
-         box.isTrigger = true;
-         go.AddComponent<EnemyAttackTrigger>().DamageAmount 
-             = instance.weaponData.BaseDamage;
-         Object.Destroy(go, 0.1f);
-         */
+public class FacedProjectileWeaponDriver : ProjectileWeaponDriver
+{
+
+    public override void Attack()
+    {
+        var projectile = SpawnProjectile();
+
+        var rb2d = projectile.GetComponent<Rigidbody2D>();
+
+        rb2d.gravityScale = 0;
+
+        //Стоим
+        if (instance.player.GetComponent<Rigidbody2D>().velocity.magnitude < 1f)
+        {
+            rb2d.velocity
+            = (instance.player.Entity.IsFacingRight ? 1 : -1)
+            * instance.player.Entity.Speed 
+            * 2f
+            * instance.weaponData.Force
+            * new Vector2(1, 0);
+        }
+        //Двигаемся
+        else
+        {
+            rb2d.velocity
+                = instance.player.GetComponent<Rigidbody2D>().velocity
+                * instance.weaponData.Force
+                * 2f;
+        }
     }
 }
 
@@ -92,20 +113,20 @@ public class WeaponInstance : MonoBehaviour
     {
         switch (WeaponType)
         {
-            case WeaponType.Default:
-                weaponDriver = new DirectionDriveWeapon();
+            case WeaponType.Melee:
+                weaponDriver = new MeleeWeaponDriver();
                 break;
             case WeaponType.Projectile:
-                weaponDriver = new ProjectileDriver();
+                weaponDriver = new ProjectileWeaponDriver();
                 break;
             case WeaponType.Faced:
+                weaponDriver = new FacedProjectileWeaponDriver();
                 break;
             default:
-                weaponDriver = new ProjectileDriver();
+                weaponDriver = new ProjectileWeaponDriver();
                 break;
         }
        
-
         weaponDriver.Init(this);
 
         
