@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIStats : MonoBehaviour
+public class UIStats : MonoBehaviourSingleton<UIStats>
 {
-    public Slider healthSlider;
-    public TextMeshProUGUI healthText;
-
-    private void Awake()
-    {
-    }
+    [SerializeField]
+    private Slider healthSlider;
+    [SerializeField]
+    private TextMeshProUGUI healthText;
+    [SerializeField]
+    private Slider experienceSlider;
+    [SerializeField]
+    private TextMeshProUGUI lvlText;
+    [SerializeField]
+    private TextMeshProUGUI enemyDeathCountText;
 
     private void Start()
     {
         Player.Instance.Entity.onHealthChanged += UpdateUI;
+        LevelManager.Instance.LevelData.OnChanged += (_) 
+            => UpdateUI();
+
         UpdateUI();
     }
 
@@ -28,6 +30,15 @@ public class UIStats : MonoBehaviour
 
         healthSlider.value = health;
         healthText.text = $"Health: {(int)(health * 100)}%";
+
+        experienceSlider.value 
+            = LevelManager.Instance.LevelCounter
+            .GetExperienceRelative(LevelManager.Instance.LevelData);
+
+        lvlText.text = $"{LevelManager.Instance.LevelData.Level} lvl";
+
+        enemyDeathCountText.text = LevelManager.Instance.LevelData.EnemyDeathCount.ToString();
+
     }
 }
 
