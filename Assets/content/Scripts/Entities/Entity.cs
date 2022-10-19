@@ -14,6 +14,8 @@ public class Entity : MonoBehaviour
 
     public bool IsFacingRight => isFacingRight;
 
+    public bool IsMoving => _rg2d.velocity.magnitude > 0;
+
     private bool isFacingRight;
 
     [HideInInspector]
@@ -68,6 +70,7 @@ public class Entity : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         var newVelocity = MoveInput * Speed;
 
         _rg2d.velocity = newVelocity;
