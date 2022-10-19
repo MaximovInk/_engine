@@ -71,7 +71,7 @@ public class Entity : MonoBehaviour
     private void FixedUpdate()
     {
 
-        var newVelocity = MoveInput * Speed;
+        var newVelocity = MoveInput.normalized * Speed;
 
         _rg2d.velocity = newVelocity;
 
