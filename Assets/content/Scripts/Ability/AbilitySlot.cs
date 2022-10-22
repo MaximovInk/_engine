@@ -6,6 +6,13 @@ public enum SlotType
     Ability
 }
 
+public struct AbilityInfo
+{
+    public string Name;
+    public string Description;
+    public Sprite Icon;
+}
+
 public class AbilitySlot
 {
     public SlotType SlotType;
@@ -31,6 +38,24 @@ public class AbilitySlot
         go.transform.position = Player.Instance.transform.position;
         go.transform.parent = Player.Instance.transform;
         go.weaponData = weaponData;
+    }
+
+    public static AbilityInfo GetInfo(AbilitySlot slot)
+    {
+        switch (slot.SlotType)
+        {
+            case SlotType.Weapon:
+                var weapon =  GameManager.Instance.WeaponDatabase.weapons[slot.ID];
+
+                return new AbilityInfo() {
+                    Name = weapon.Name,
+                    Description = weapon.Description,
+                    Icon = weapon.Icon
+                };
+
+        }
+
+        return default;
     }
 }
 

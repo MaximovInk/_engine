@@ -3,6 +3,9 @@
 [System.Serializable]
 public class WeaponData
 {
+    public string Name;
+    public string Description;
+
     public WeaponInstance weaponDriverPrefab;
 
     public GameObject prefab;

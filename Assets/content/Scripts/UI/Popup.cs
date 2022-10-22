@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Popup : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class Popup : MonoBehaviour
     private AnimationCurve _inCurve;
     [SerializeField]
     private AnimationCurve _outCurve;
+
+    public event Action onBeginShow;
+    public event Action onEndShow;
+
+
+    public event Action onBeginHide;
+    public event Action onEndHide;
 
     public bool IsActive
     {
@@ -42,9 +50,17 @@ public class Popup : MonoBehaviour
     {
         if (IsActive) return;
 
+        onBeginShow?.Invoke();
+
         currentPosition = outOfScreenPosition;
 
         var tween = movingObject.DOAnchorPos3D(_initPosition, _duration).SetEase(_inCurve).SetUpdate(true);
+
+        tween.onKill += () =>
+        {
+            onEndShow?.Invoke();
+        };
+
         IsActive = true;
     }
 
@@ -52,16 +68,22 @@ public class Popup : MonoBehaviour
     {
         if (!IsActive) return;
 
+        onBeginHide?.Invoke();
+
         currentPosition = _initPosition;
         var tween = movingObject.DOAnchorPos3D(outOfScreenPosition, _duration).SetEase(_outCurve).SetUpdate(true);
         tween.onKill += () => {
             IsActive = false;
+            onEndHide?.Invoke();
         };
     }
 
     public void HideImmediate()
     {
         if (!IsActive) return;
+
+        onBeginHide?.Invoke();
+        onEndHide?.Invoke();
 
         currentPosition = outOfScreenPosition;
 
@@ -75,6 +97,9 @@ public class Popup : MonoBehaviour
         currentPosition = _initPosition;
 
         IsActive = true;
+
+        onBeginShow?.Invoke();
+        onEndShow?.Invoke();
     }
 
 

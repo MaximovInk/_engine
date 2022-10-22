@@ -2,7 +2,25 @@
 
 public class Pause : MonoBehaviourSingletonAuto<Pause>
 {
-    public bool isPause = false;
+    private float timeScaleSaved = 1f;
+
+    public bool IsPause
+    {
+        get => _isPause;
+        set {
+            _isPause = value;
+
+            if (_isPause)
+            {
+                timeScaleSaved = Time.timeScale;
+                Time.timeScale = 0;
+            }
+            else
+                Time.timeScale = timeScaleSaved;
+        }
+    }
+
+    private bool _isPause;
 
     private GameObject _fade;
 
@@ -26,15 +44,13 @@ public class Pause : MonoBehaviourSingletonAuto<Pause>
     {
         _fade.SetActive(true);
         HudController.Instance.Hide();
-        isPause = true;
-        Time.timeScale = 0;
+        IsPause = true;
     }
 
     public void StopPause()
     {
         _fade.SetActive(false);
         HudController.Instance.Show();
-        isPause = false;
-        Time.timeScale = 1;
+        IsPause = false;
     }
 }

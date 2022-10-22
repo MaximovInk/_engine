@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
             {
                 LevelData.Level++;
                 LevelData.Experience = 0;
+                LevelUPPanel.Instance.Popup.Show();
             }
         };
     }
