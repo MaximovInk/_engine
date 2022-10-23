@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class LevelManager : MonoBehaviourSingleton<LevelManager>
 {
     public LevelData LevelData = new LevelData();
@@ -10,6 +12,19 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
     private ExperienceItem ExperienceItem;
 
     public event Action AbilitesChanged;
+
+    private List<Enemy> enemies = new List<Enemy>();
+
+    public Enemy[] enemiesPrefabs;
+
+    public Enemy MakeEnemy(Vector3 position)
+    {
+        var instance =  Instantiate(enemiesPrefabs[0]);
+
+        instance.transform.position = position;
+
+        return instance;
+    }
 
     public void SpawnExperienceAt(Vector3 position)
     {

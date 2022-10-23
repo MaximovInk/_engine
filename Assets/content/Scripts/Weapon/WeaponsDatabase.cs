@@ -17,6 +17,8 @@ public class WeaponData
 
     public float Duration;
 
+    public float AutoTarget = 0.1f;
+
     public Vector3 scale = Vector3.one;
 
     public float Force = 1f;

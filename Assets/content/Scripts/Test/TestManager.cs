@@ -16,5 +16,12 @@ public class TestManager : MonoBehaviour
     {
         LevelUPPanel.Instance.Popup.Show();
     }
+
+    public void MakeEnemy()
+    {
+        LevelManager.Instance.MakeEnemy(
+            Player.Instance.transform.position 
+            + new Vector3(Random.Range(-10,10), Random.Range(-10, 10), 0));
+    }
 }
 
