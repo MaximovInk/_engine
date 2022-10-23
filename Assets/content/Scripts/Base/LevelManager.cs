@@ -13,7 +13,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     public event Action AbilitesChanged;
 
-    private List<Enemy> enemies = new List<Enemy>();
+    [SerializeField]
+    private List<Enemy> enemiesOnScene = new List<Enemy>();
 
     public Enemy[] enemiesPrefabs;
 
@@ -22,6 +23,11 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
         var instance =  Instantiate(enemiesPrefabs[0]);
 
         instance.transform.position = position;
+
+        enemiesOnScene.Add(instance);
+
+        instance.Entity.onDead += 
+            () => { enemiesOnScene.Remove(instance); };
 
         return instance;
     }
