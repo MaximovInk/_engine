@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     public WeaponsDatabase WeaponDatabase;
+    public AbilityDatabase AbilityDatabase;
 
     private void Awake()
     {

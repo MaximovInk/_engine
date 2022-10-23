@@ -4262,6 +4262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponDatabase: {fileID: 11400000, guid: 1b626fd5e2542b64c8b7f70d9ad0a894, type: 2}
+  AbilityDatabase: {fileID: 11400000, guid: b4eed33ad77adbc45bcdadf4ec653dd7, type: 2}
 --- !u!1 &2012991111
 GameObject:
   m_ObjectHideFlags: 0

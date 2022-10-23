@@ -24,6 +24,8 @@ public class AbilitySlot
         {
             case SlotType.Weapon:
                 return GameManager.Instance.WeaponDatabase.weapons[ID].Icon;
+            case SlotType.Ability:
+                return GameManager.Instance.AbilityDatabase.abilites[ID].Icon;
         }
 
         return null;
@@ -31,13 +33,21 @@ public class AbilitySlot
 
     public void Init()
     {
-        var weaponData = GameManager.Instance.WeaponDatabase.weapons[ID];
+        if (SlotType == SlotType.Weapon)
+        {
 
-        var go = new GameObject().AddComponent<WeaponInstance>();
+            var weaponData = GameManager.Instance.WeaponDatabase.weapons[ID];
 
-        go.transform.position = Player.Instance.transform.position;
-        go.transform.parent = Player.Instance.transform;
-        go.weaponData = weaponData;
+            var go = new GameObject().AddComponent<WeaponInstance>();
+
+            go.transform.position = Player.Instance.transform.position;
+            go.transform.parent = Player.Instance.transform;
+            go.weaponData = weaponData;
+        }
+        else
+        {
+            Debug.Log("INIT ABILITY *TODO*");
+        }
     }
 
     public static AbilityInfo GetInfo(AbilitySlot slot)
@@ -52,9 +62,18 @@ public class AbilitySlot
                     Description = weapon.Description,
                     Icon = weapon.Icon
                 };
+           case SlotType.Ability:
+                var ability = GameManager.Instance.AbilityDatabase.abilites[slot.ID];
 
+                return new AbilityInfo()
+                {
+                    Name = ability.Name,
+                    Description = ability.Description,
+                    Icon = ability.Icon
+                };
         }
 
+        Debug.Log("RETURN DEFAULT??");
         return default;
     }
 }

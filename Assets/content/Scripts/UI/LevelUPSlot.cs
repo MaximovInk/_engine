@@ -11,9 +11,14 @@ public class LevelUPSlot : MonoBehaviour
     [SerializeField]
     private Image _icon;
 
+    public AbilitySlot GetData() => _slotData;
+    private AbilitySlot _slotData;
+
     public void SetData(AbilitySlot slot)
     {
         var button = GetComponent<Button>();
+
+        _slotData = slot;
 
         var data = AbilitySlot.GetInfo(slot);
 

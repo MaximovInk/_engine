@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class LevelUPPanel : MonoBehaviourSingleton<LevelUPPanel>
 {
@@ -27,16 +29,50 @@ public class LevelUPPanel : MonoBehaviourSingleton<LevelUPPanel>
     private void GenerateData()
     {
         Utilites.ClearAllChildren(_slotsParent);
-        var idMax = GameManager.Instance.WeaponDatabase.weapons.Length;
 
-        var ids = Utilites.Choose(3, 1, idMax);
+        List<AbilitySlot> availableSlots = new List<AbilitySlot>();
 
-        for (int i = 0; i < ids.Length; i++)
+        var weapons = GameManager.Instance.WeaponDatabase.weapons.ToArray();
+        var abilites = GameManager.Instance.AbilityDatabase.abilites.ToArray();
+
+        for (int i = 1; i < weapons.Length; i++)
         {
-            SpawnSlot(new AbilitySlot() { 
-                ID = ids[i],
+            availableSlots.Add(new AbilitySlot() {
+                ID = i,
                 SlotType = SlotType.Weapon
             });
+        }
+
+        for(int i = 1; i < abilites.Length; i++)
+        {
+            availableSlots.Add(new AbilitySlot()
+            {
+                ID = i,
+                SlotType = SlotType.Ability
+            });
+        }
+
+        var slots = LevelManager.Instance.GetAbilites();
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            var index = availableSlots
+                .FirstOrDefault(n => 
+                n.ID == slots[i].ID &&
+                n.SlotType == slots[i].SlotType);
+
+            availableSlots.Remove(index);
+        }
+
+        print($"{weapons.Length} {abilites.Length} {availableSlots.Count}");
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (availableSlots.Count <= 0) break;
+
+            var id = Random.Range(0, availableSlots.Count);
+            SpawnSlot(availableSlots[id]);
+            availableSlots.RemoveAt(id);
         }
     }
 

@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     private void Awake()
     {
-        LevelData.abilities = new System.Collections.Generic.List<AbilitySlot>();
+        LevelData.abilities = new List<AbilitySlot>();
 
         LevelData.OnChanged += (data) =>
         {
@@ -62,6 +62,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
             }
         };
     }
+
+    public List<AbilitySlot> GetAbilites() => LevelData.abilities;
 
     public void AddAbility(AbilitySlot slot)
     {

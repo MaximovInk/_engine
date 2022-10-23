@@ -3,28 +3,35 @@
 [System.Serializable]
 public class WeaponData
 {
+    [Header("Основная базовая информация")]
     public string Name;
     public string Description;
+    public WeaponType WeaponType;
+    public Sprite Icon; 
 
-    public WeaponInstance weaponDriverPrefab;
+    [Header("Доп информация")]
+    public float Duration;
+    public float Couldown;
 
+    [Header("Для типа Melee")]
     public GameObject prefab;
-    public int MaxLevel;
-    public int BaseDamage;
-    public Sprite Icon;
-
+    [Header("Для типа Projectile|Faced")]
     public Sprite Sprite;
 
-    public float Duration;
+    public Vector3 scale = Vector3.one;
 
     public float AutoTargetValue = 0.1f;
     public float AutoTargetFov = 45.0f;
 
-    public Vector3 scale = Vector3.one;
-
+    [Header("Для типа Faced")]
     public float Force = 1f;
 
-    public WeaponType WeaponType;
+    [Header("Не используется*")]
+
+    public int MaxLevel;
+    public int BaseDamage;
+
+
 
     /*
         public int Rarity;
