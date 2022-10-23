@@ -47,6 +47,30 @@ public class AbilitySlot
         else
         {
             Debug.Log("INIT ABILITY *TODO*");
+
+            var ability = GameManager.Instance.AbilityDatabase.abilites[ID];
+
+            switch (ability.Type)
+            {
+                case AbilityType.PlayerSpeed:
+                    Player.Instance.Entity.Speed *= ability.Value;
+
+                    break;
+                case AbilityType.AddDuration:
+
+
+                    break;
+                case AbilityType.ProjectileSpeed:
+                    break;
+                case AbilityType.Size:
+                    break;
+                case AbilityType.Damage:
+                    break;
+                case AbilityType.AddProjectile:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
