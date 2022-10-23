@@ -25,9 +25,9 @@ MonoBehaviour:
     WeightChance: 1
     Type: 0
     Value: 1.2
-  - Name: Duration
-    Description: Add projectile time
+  - Name: WeaponDamage
+    Description: Add damage to all weapons
     Icon: {fileID: 3536865724434752150, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     WeightChance: 1
-    Type: 1
-    Value: 0.1
+    Type: 4
+    Value: 2.3
