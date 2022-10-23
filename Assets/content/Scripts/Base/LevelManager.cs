@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviourSingleton<LevelManager>
@@ -30,6 +31,15 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
             () => { enemiesOnScene.Remove(instance); };
 
         return instance;
+    }
+
+    public bool EnemiesIsExist() => enemiesOnScene.Count > 0;
+
+    public Enemy FindEnemyNearestTo(Vector3 position)
+    {
+        return enemiesOnScene
+            .OrderByDescending(v2 => 
+            Vector2.Distance(position, v2.transform.position)).First();
     }
 
     public void SpawnExperienceAt(Vector3 position)

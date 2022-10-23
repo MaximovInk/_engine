@@ -33,7 +33,15 @@ public class ProjectileWeaponDriver : WeaponDriver
         rb2d.gravityScale = 4f;
         var box = go.AddComponent<BoxCollider2D>();
         box.isTrigger = true;
-        return go.AddComponent<Projectile>();
+        var projectile = go.AddComponent<Projectile>();
+
+        projectile.AutoTargetValue = instance.weaponData.AutoTargetValue;
+        projectile.AutoTargetFov = instance.weaponData.AutoTargetFov;
+        projectile.Speed = rb2d.velocity.magnitude;
+
+        projectile.Init();
+
+        return projectile;
     }
 
     public override void Attack()
@@ -86,9 +94,17 @@ public class FacedProjectileWeaponDriver : ProjectileWeaponDriver
                 = Player.Instance.GetComponent<Rigidbody2D>().velocity
                 * instance.weaponData.Force
                 * 2f;
+
         }
 
+        projectile.Speed = rb2d.velocity.magnitude;
+
+        projectile.AutoTargetValue = instance.weaponData.AutoTargetValue;
+        projectile.AutoTargetFov = instance.weaponData.AutoTargetFov;
         projectile.transform.up = rb2d.velocity.normalized;
+        projectile.isFaced = true;
+
+        projectile.Init();
     }
 }
 

@@ -17,7 +17,8 @@ public class WeaponData
 
     public float Duration;
 
-    public float AutoTarget = 0.1f;
+    public float AutoTargetValue = 0.1f;
+    public float AutoTargetFov = 45.0f;
 
     public Vector3 scale = Vector3.one;
 

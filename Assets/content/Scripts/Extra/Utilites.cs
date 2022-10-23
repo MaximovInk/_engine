@@ -27,6 +27,10 @@ public static class Utilites
         return choices;
     }
 
+    public static float VecToAngle(Vector2 direction)
+    {
+        return Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+    }
 
 
 }
