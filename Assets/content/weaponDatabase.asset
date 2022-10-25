@@ -79,7 +79,7 @@ MonoBehaviour:
     Sprite: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
     AutoTargetValue: 1
-    AutoTargetFov: 90
+    AutoTargetFov: 89.69
     Force: 1
     MaxLevel: 0
     BaseDamage: 10

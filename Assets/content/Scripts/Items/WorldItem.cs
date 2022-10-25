@@ -8,13 +8,12 @@ public class WorldItem : MonoBehaviour
         if (player != null)
         {
             OnPickup();
-            Destroy(gameObject);
         }
     }
 
     protected virtual void OnPickup()
     {
-
+        Destroy(gameObject);
     }
 }
 
