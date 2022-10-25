@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
 
             if(_timerDmg > DelayReloadDamage)
             {
-                Player.Instance.Entity.Damage(DamageAmount);
+                Player.Instance.Entity.Damage(DamageAmount, Vector2.zero);
                 _timerDmg = 0f;
             }
         }

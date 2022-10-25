@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     private const float TargetFindingDelay = 0.1f;
     private float _targetFindTimer = 0f;
 
+    public float Knockback;
+
     public float Speed = 0f;
 
     public bool isFaced = false;
@@ -25,7 +27,8 @@ public class Projectile : MonoBehaviour
         var enemy = collision.GetComponent<Enemy>();
         if(enemy != null)
         {
-            enemy.Entity.Damage(10);
+            var delta = enemy.transform.position - transform.position;
+            enemy.Entity.Damage(10, delta * Knockback);
             Destroy(gameObject);
         }
     }

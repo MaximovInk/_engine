@@ -16,6 +16,8 @@ public class Entity : MonoBehaviour
 
     public bool IsMoving => _rg2d.velocity.magnitude > 0;
 
+    public Vector2 appliedVelocity;
+
     private bool isFacingRight;
 
     [HideInInspector]
@@ -53,7 +55,7 @@ public class Entity : MonoBehaviour
         isFacingRight = true;
     }
 
-    public void Damage(int value)
+    public void Damage(int value, Vector2 knockback)
     {
         Health -= value;
 
@@ -64,14 +66,30 @@ public class Entity : MonoBehaviour
             onDead?.Invoke();
 
             Destroy(gameObject);
-        }    
+        }
 
+        if(knockback != Vector2.zero)
+        {
+            StartCoroutine(Knockback(knockback));
+        }
+    }
+
+    private IEnumerator Knockback(Vector2 value)
+    {
+        float timer = 0f;
+
+        while(timer < 0.1f)
+        {
+            timer += Time.deltaTime;
+            appliedVelocity = value;
+            yield return null;
+        }
+        appliedVelocity = Vector2.zero;
     }
 
     private void FixedUpdate()
     {
-
-        var newVelocity = MoveInput.normalized * Speed;
+        var newVelocity = MoveInput.normalized * Speed + appliedVelocity;
 
         _rg2d.velocity = newVelocity;
 

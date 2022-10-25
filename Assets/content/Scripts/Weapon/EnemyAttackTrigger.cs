@@ -4,6 +4,7 @@ public class EnemyAttackTrigger : MonoBehaviour
 {
     public int DamageAmount = 10;
     public float Duration = 0.1f;
+    public float Knockback;
 
     private void Awake()
     {
@@ -16,7 +17,8 @@ public class EnemyAttackTrigger : MonoBehaviour
 
         if(enemy != null)
         {
-            enemy.Entity.Damage(DamageAmount);
+            var delta = enemy.transform.position - transform.position;
+            enemy.Entity.Damage(DamageAmount, delta * Knockback);
             Destroy(gameObject);
         }
     }

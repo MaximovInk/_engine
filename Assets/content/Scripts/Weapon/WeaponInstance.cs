@@ -38,6 +38,7 @@ public class ProjectileWeaponDriver : WeaponDriver
         projectile.AutoTargetValue = instance.weaponData.AutoTargetValue;
         projectile.AutoTargetFov = instance.weaponData.AutoTargetFov;
         projectile.Speed = rb2d.velocity.magnitude;
+        projectile.Knockback = instance.weaponData.Knockback;
 
         projectile.Init();
 
@@ -63,6 +64,10 @@ public class MeleeWeaponDriver : WeaponDriver
             (Player.Instance.Entity.IsFacingRight ? 1 : -1),
             go.transform.localScale.y,
             go.transform.localScale.z);
+
+
+        go.GetComponent<EnemyAttackTrigger>().Knockback 
+            = instance.weaponData.Knockback;
     }
 }
 
@@ -103,6 +108,7 @@ public class FacedProjectileWeaponDriver : ProjectileWeaponDriver
         projectile.AutoTargetFov = instance.weaponData.AutoTargetFov;
         projectile.transform.up = rb2d.velocity.normalized;
         projectile.isFaced = true;
+        projectile.Knockback = instance.weaponData.Knockback;
 
         projectile.Init();
     }

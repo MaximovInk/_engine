@@ -13,6 +13,8 @@ public class WeaponData
     public float Duration;
     public float Couldown;
 
+    public float Knockback;
+
     [Header("Для типа Melee")]
     public GameObject prefab;
     [Header("Для типа Projectile|Faced")]
@@ -42,7 +44,7 @@ public class WeaponData
         public float Pierce;
         public float ProjectileInterval;
         public float HitboxDelay;
-        public float Knockback;
+        
         public float Chance;
         public int PoolLimit;
         public bool BlocksByWalls;
