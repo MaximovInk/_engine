@@ -79,12 +79,12 @@ MonoBehaviour:
     Icon: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     Duration: 1
     Couldown: 0
-    Knockback: 1
+    Knockback: 10
     prefab: {fileID: 0}
     Sprite: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
     AutoTargetValue: 1
     AutoTargetFov: 180
-    Force: 5
+    Force: 1
     MaxLevel: 0
     BaseDamage: 10

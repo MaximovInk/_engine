@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Time.timeScale = 1f;
         if(Player.Instance != null)
         {
-            Player.Instance.Entity.onDead += Restart;
+            Player.Instance.Entity.onDead += () => { SceneManager.LoadScene(0); };
             Pause.Instance.StopPause();
         }
     }
