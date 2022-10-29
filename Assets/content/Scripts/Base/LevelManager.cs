@@ -19,6 +19,11 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     public Enemy[] enemiesPrefabs;
 
+    public AudioSource AudioSource => _audioSource;
+
+    [HideInInspector]
+    private AudioSource _audioSource;
+
     public Enemy MakeEnemy(Vector3 position)
     {
         var instance =  Instantiate(enemiesPrefabs[0]);
@@ -50,6 +55,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         LevelData.abilities = new List<AbilitySlot>();
 
         LevelData.OnChanged += (data) =>

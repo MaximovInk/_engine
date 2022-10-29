@@ -28,6 +28,7 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 0
+    attackSound: {fileID: 0}
   - Name: some name
     Description: Projectile
     WeaponType: 1
@@ -43,6 +44,7 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+    attackSound: {fileID: 8300000, guid: 809b348816671ba4780b07c31f9e0d19, type: 3}
   - Name: anotther weapon
     Description: Melee
     WeaponType: 0
@@ -58,6 +60,7 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+    attackSound: {fileID: 8300000, guid: 73ff754cc3f675843ab74ab2f0289b71, type: 3}
   - Name: ok
     Description: Melee in double side
     WeaponType: 0
@@ -73,6 +76,7 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+    attackSound: {fileID: 8300000, guid: eeaa0dcb7aaf2cf44ac4a59f0d4b2f42, type: 3}
   - Name: abc
     Description: Faced directional weapon
     WeaponType: 2
@@ -88,3 +92,4 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+    attackSound: {fileID: 8300000, guid: 809b348816671ba4780b07c31f9e0d19, type: 3}
