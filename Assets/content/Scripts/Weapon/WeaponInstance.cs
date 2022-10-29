@@ -26,7 +26,7 @@ public class ProjectileWeaponDriver : WeaponDriver
     {
         GameObject go = new GameObject();
         go.transform.position = instance.transform.position;
-        go.transform.localScale = instance.weaponData.scale;
+        go.transform.localScale = instance.weaponData.scale * instance.SizeMultiplier;
         go.AddComponent<SpriteRenderer>().sprite = instance.weaponData.Sprite;
         var rb2d = go.AddComponent<Rigidbody2D>();
         rb2d.velocity = new Vector2(5f * (Player.Instance.Entity.IsFacingRight ? 1 : -1), 10f);
@@ -63,7 +63,7 @@ public class MeleeWeaponDriver : WeaponDriver
             go.transform.localScale.x *
             (Player.Instance.Entity.IsFacingRight ? 1 : -1),
             go.transform.localScale.y,
-            go.transform.localScale.z);
+            go.transform.localScale.z) * instance.SizeMultiplier;
 
 
         go.GetComponent<EnemyAttackTrigger>().Knockback 
@@ -119,6 +119,9 @@ public class WeaponInstance : MonoBehaviour
     //[HideInInspector]
     public WeaponData weaponData;
 
+    public float CouldownMultiplier = 1f;
+    public float SizeMultiplier = 1f;
+
     private WeaponDriver weaponDriver;
 
     private float timer;
@@ -148,9 +151,9 @@ public class WeaponInstance : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * CouldownMultiplier;
 
-        if(timer > weaponData.Duration)
+        if(timer > weaponData.Couldown)
         {
             timer = 0;
 

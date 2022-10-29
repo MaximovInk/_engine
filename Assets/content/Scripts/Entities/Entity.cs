@@ -41,6 +41,8 @@ public class Entity : MonoBehaviour
     public event Action onDead;
     public event Action onHealthChanged;
 
+
+
     public void Flip()
     {
         isFacingRight = !isFacingRight;

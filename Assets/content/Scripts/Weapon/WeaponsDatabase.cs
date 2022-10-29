@@ -33,6 +33,7 @@ public class WeaponData
     public int MaxLevel;
     public int BaseDamage;
 
+    public AudioClip attackSound;
 
 
     /*

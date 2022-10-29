@@ -173,6 +173,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 4603131709175559168, guid: a82462f19034aae46ab363c1a3850a49, type: 3}
     Sprite: {fileID: 0}
     scale: {x: 1, y: 1, z: 1}
@@ -181,6 +182,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &21991482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,6 +2257,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 4603131709175559168, guid: 65e6df61875fbfb498848f79ed704c55, type: 3}
     Sprite: {fileID: 0}
     scale: {x: 1, y: 1, z: 1}
@@ -2262,6 +2266,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &386203906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,6 +3449,133 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &673682150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673682152}
+  - component: {fileID: 673682151}
+  m_Layer: 0
+  m_Name: '[LevelSound]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &673682151
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673682150}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 00e3f0f77c0ccce42b097a626c4d89bd, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &673682152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673682150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6851835, y: 2.5546088, z: 3.2886875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680618881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,6 +5101,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 4603131709175559168, guid: a82462f19034aae46ab363c1a3850a49, type: 3}
     Sprite: {fileID: 0}
     scale: {x: 1, y: 1, z: 1}
@@ -4976,6 +5110,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &976745688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6517,6 +6653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveInput: {x: 0, y: 0}
   Speed: 5
+  appliedVelocity: {x: 0, y: 0}
   MaxHealth: 100
 --- !u!61 &1115853060
 BoxCollider2D:
@@ -6902,6 +7039,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 0}
     Sprite: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
@@ -6910,6 +7048,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1001 &1227157755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7099,6 +7239,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 0}
     Sprite: {fileID: 2918301305313514144, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
@@ -7107,6 +7248,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &1298520253
 GameObject:
   m_ObjectHideFlags: 0
@@ -7471,6 +7614,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 4603131709175559168, guid: 65e6df61875fbfb498848f79ed704c55, type: 3}
     Sprite: {fileID: 0}
     scale: {x: 1, y: 1, z: 1}
@@ -7479,6 +7623,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!4 &1356658808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7116922241268935209, guid: 2b74366075787964ea847ef4ec9e2eb4, type: 3}
@@ -8326,6 +8472,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 0}
     Sprite: {fileID: 6711139061982437163, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
@@ -8334,6 +8481,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &1502089056
 GameObject:
   m_ObjectHideFlags: 0
@@ -8564,6 +8713,7 @@ MonoBehaviour:
     Icon: {fileID: 0}
     Duration: 1
     Couldown: 0
+    Knockback: 0
     prefab: {fileID: 0}
     Sprite: {fileID: 6711139061982437163, guid: 18f6cab6807ac1840975a5c595ff379c, type: 3}
     scale: {x: 0.5, y: 0.5, z: 0.5}
@@ -8572,6 +8722,8 @@ MonoBehaviour:
     Force: 1
     MaxLevel: 0
     BaseDamage: 10
+  CouldownMultiplier: 1
+  SizeMultiplier: 1
 --- !u!1 &1551177740
 GameObject:
   m_ObjectHideFlags: 0
@@ -25606,6 +25758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveInput: {x: 0, y: 0}
   Speed: 5
+  appliedVelocity: {x: 0, y: 0}
   MaxHealth: 100
 --- !u!114 &2113535909
 MonoBehaviour:
