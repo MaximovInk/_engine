@@ -16,7 +16,7 @@ public abstract class WeaponDriver
         var clip = instance.weaponData.attackSound;
         if(clip != null)
         {
-            LevelManager.Instance.AudioSource.PlayOneShot(clip);
+            LevelManager.Instance.AudioSource.PlayOneShot(clip, GameManager.Instance.settingsData.fxVolume);
         }
     }
 }

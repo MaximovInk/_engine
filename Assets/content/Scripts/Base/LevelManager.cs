@@ -57,6 +57,9 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
     {
         _audioSource = GetComponent<AudioSource>();
 
+        if(GameManager.Instance != null)
+            _audioSource.volume = GameManager.Instance.settingsData.musicVolume;
+
         LevelData.abilities = new List<AbilitySlot>();
 
         LevelData.OnChanged += (data) =>
