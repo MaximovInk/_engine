@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
     [SerializeField]
     private List<Enemy> enemiesOnScene = new List<Enemy>();
 
+    public int EnemiesCount => enemiesOnScene.Count;
+
     public Enemy[] enemiesPrefabs;
 
     public AudioSource AudioSource => _audioSource;
@@ -26,13 +28,18 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     public Enemy MakeEnemy(Vector3 position)
     {
-        var instance =  Instantiate(enemiesPrefabs[0]);
+        return MakeEnemy(position, 0);
+    }
+
+    public Enemy MakeEnemy(Vector3 position, int id)
+    {
+        var instance = Instantiate(enemiesPrefabs[id]);
 
         instance.transform.position = position;
 
         enemiesOnScene.Add(instance);
 
-        instance.Entity.onDead += 
+        instance.Entity.onDead +=
             () => { enemiesOnScene.Remove(instance); };
 
         return instance;

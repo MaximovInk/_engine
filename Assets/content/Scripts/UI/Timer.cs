@@ -2,11 +2,17 @@
 using TMPro;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer : MonoBehaviourSingleton<Timer>
 {
     private TextMeshProUGUI text;
 
     private float value;
+
+    public float Value => value;
+
+    private float minuteCounter = 0f;
+
+    public Action<int> OnMinuteElapsed;
 
     private void Awake()
     {
@@ -16,6 +22,12 @@ public class Timer : MonoBehaviour
     private void Update()
     {
         value += Time.deltaTime;
+        minuteCounter += Time.deltaTime;
+        if (minuteCounter >= 60)
+        {
+            minuteCounter = 0f;
+            OnMinuteElapsed?.Invoke((int)(value / 60f));
+        }
 
         TimeSpan time = TimeSpan.FromSeconds(value);
 
